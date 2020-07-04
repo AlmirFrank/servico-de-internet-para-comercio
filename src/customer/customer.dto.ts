@@ -12,6 +12,11 @@ import { IsString, MinLength, MaxLength } from "class-validator";
     @MaxLength(12, { message: 'O campo cpf deve ter no máximo 12 caracteres' })
     cpf: string;
 
+    @IsString({ message: 'O RG inserido é inválido!' })
+    @MinLength(11, { message: 'O campo RG deve ter no mínimo 11 caracteres' })
+    @MaxLength(12, { message: 'O campo RG deve ter no máximo 12 caracteres' })
+    rg: string;
+
     @IsString({ message: 'O endereço inserido é inválido!' })
     address: string;
 

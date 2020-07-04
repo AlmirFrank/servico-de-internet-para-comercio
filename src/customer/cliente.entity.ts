@@ -14,6 +14,9 @@ export class Cliente {
   @Column({ name: 'CPF', type: 'varchar' })
   cpf: string;
 
+  @Column({ name: 'RG', type: 'varchar' })
+  rg: string;
+
   @Column({ name: 'Endereço', type: 'varchar' })
   address: string;
 
