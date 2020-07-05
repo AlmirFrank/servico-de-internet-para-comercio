@@ -33,7 +33,7 @@ export class OrderItemService {
     }
 
     update(itemPedido: ItemPedido) {
-      return this.repository.findOne(itemPedido);
+      return this.repository.update(itemPedido.id, itemPedido);
 
     }
 

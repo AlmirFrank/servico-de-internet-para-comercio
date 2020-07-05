@@ -15,7 +15,7 @@ export class StockController {
   async update(productId: number) {
     const stock = await this.findById(productId);
       stock.quantityInStock =- 1;
-        return this.stock.update(stock.quantityInStock);
+        return this.stock.update(stock);
 
   }
 

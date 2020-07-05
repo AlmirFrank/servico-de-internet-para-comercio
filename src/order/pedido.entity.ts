@@ -1,5 +1,6 @@
-import { Entity, ManyToOne, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, ManyToOne, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Cliente } from "src/customer/cliente.entity";
+import { Produto } from "src/product/produto.entity";
 
 @Entity("pedidos")
 
@@ -29,12 +30,14 @@ export class Pedido {
   @Column({ name: 'Valor de Descontos', type: 'varchar' })
   discountAmount: string;
 
-  @ManyToOne(type => Cliente, customer => customer.pedido)
-  customer: Cliente[];
+  @ManyToOne(() => Cliente, customer => customer.pedido)
+  customer: Cliente;
+
+  @OneToMany(() => Produto, product => product.pedido)
+  produtos: Produto[];
 
   @Column({ name: 'Endereço de Entrega', type: 'varchar' })
-  deliveryAddress: string;
-
+  deliveryAddress: string; 
   
 
 }

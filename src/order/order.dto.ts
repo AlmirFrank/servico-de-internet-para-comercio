@@ -2,6 +2,8 @@ import { IsString, MinLength, MaxLength, IsDate, IsInt } from "class-validator";
   
   export class OrderDto {
 
+    id: number;
+
     @IsInt({ message: 'O código do pedido é inválido!' })
     @MinLength(2, { message: 'O campo código do pedido deve ter no mínimo 2 dígitos' })
     @MaxLength(8, { message: 'O campo código do pedido deve ter no máximo 8 dígitos' })

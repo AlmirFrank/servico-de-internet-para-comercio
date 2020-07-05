@@ -33,7 +33,7 @@ export class OrderService {
     }
 
     update(pedido: Pedido) {
-      return this.repository.findOne(pedido);
+      return this.repository.update(pedido.id, pedido);
 
     }
 

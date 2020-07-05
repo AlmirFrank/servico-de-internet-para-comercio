@@ -9,11 +9,11 @@ export class ItemPedido {
   @PrimaryGeneratedColumn()
   id: number;
   
-  @ManyToOne(type => Produto, product => product)
+  @ManyToOne(() => Produto, product => product)
   @JoinColumn({ name: 'produto_id'})
   product: Produto;
   
-  @ManyToOne(type => Pedido, order => order)
+  @ManyToOne(() => Pedido, order => order)
   @JoinColumn({ name: 'pedido_id'})
   order: Pedido;
   

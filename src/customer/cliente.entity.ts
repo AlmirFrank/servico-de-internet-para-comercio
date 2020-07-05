@@ -29,7 +29,7 @@ export class Cliente {
   @Column({ name: 'CEP', type: 'varchar' })
   cep: string;
   
-  @OneToMany(type => Pedido, order => order.customer)
+  @OneToMany(() => Pedido, order => order.customer)
   orders: Pedido[];
   pedido: Cliente[];
 

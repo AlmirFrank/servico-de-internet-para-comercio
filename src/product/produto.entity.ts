@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Pedido } from "src/order/pedido.entity";
 
 @Entity("produtos")
 
@@ -24,5 +25,8 @@ export class Produto {
 
   @Column({ name: 'Unidade de Medida', type: 'varchar' })
   unity: string;
+
+  @ManyToOne(() => Pedido, order => order.produtos)
+  pedido: Pedido;
   
 }

@@ -2,6 +2,8 @@ import { IsInt, IsString, MinLength, MaxLength } from "class-validator";
   
   export class OrderItemDto {
 
+    id: number;
+
     @IsInt({ message: 'A quantidade inserida é inválida!' })
     @MinLength(1, { message: 'O campo quantidade deve ter no mínimo 2 dígitos' })
     @MaxLength(3, { message: 'O campo quantidade deve ter no máximo 8 dígitos' })

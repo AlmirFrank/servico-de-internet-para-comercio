@@ -1,6 +1,8 @@
 import { Controller, Post, Body, Get, Put, Delete, Param } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { Cliente } from './cliente.entity';
+import { plainToClass } from "class-transformer";
+import { CustomerDto } from './customer.dto';
 
 @Controller('customer')
 export class CustomerController {
@@ -8,7 +10,9 @@ export class CustomerController {
   constructor(private readonly service: CustomerService) { }
   
   @Post()
-  save(@Body() customer: Cliente) {
+  save(@Body() customerDto: CustomerDto) {
+
+    const customer = plainToClass(Cliente, customerDto)
     return this.service.save(customer);
     
   }
@@ -20,14 +24,16 @@ export class CustomerController {
   }
 
   @Get(":id")
-  findById(id: number) {
+  findById(@Param('id') id: number) {
     return this.service.findById(id);
 
   }
 
-  @Put()
-  update(@Body() customer: Cliente) {
-    return this.service.update(customer);
+  @Put(':id')
+  update(@Param('id') id: number, @Body() customerDto: CustomerDto) {
+    customerDto.id = id;
+    const customer = plainToClass(Cliente, customerDto);
+      return this.service.update(customer);
 
   }  
 

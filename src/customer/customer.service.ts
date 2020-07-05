@@ -33,7 +33,7 @@ export class CustomerService {
     }
 
     update(cliente: Cliente) {
-      return this.repository.findOne(cliente);
+      return this.repository.update(cliente.id, cliente);
 
     }
 

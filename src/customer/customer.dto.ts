@@ -2,6 +2,8 @@ import { IsString, MinLength, MaxLength } from "class-validator";
   
   export class CustomerDto {
 
+    id: number;
+
     @IsString({ message: 'O nome inserido é inválido!' })
     @MinLength(4, { message: 'O campo nome deve ter no mínimo 4 caracteres' })
     @MaxLength(30, { message: 'O campo nome deve ter no máximo 30 caracteres' })

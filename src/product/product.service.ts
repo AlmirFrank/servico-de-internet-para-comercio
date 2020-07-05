@@ -33,7 +33,7 @@ export class ProductService {
     }
 
     update(produto: Produto) {
-      return this.repository.findOne(produto);
+      return this.repository.update(produto.id, produto);
 
     }
     
