@@ -1,13 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity("produtos")
+@Entity("medicamento")
 
-export class Stock { 
+export class Controle { 
 
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
  
   @Column({ name: 'Quantidade em estoque', type: 'int' })
-  quantityInStock: number;
-  
+  quantidadeEmEstoque: number;
 }

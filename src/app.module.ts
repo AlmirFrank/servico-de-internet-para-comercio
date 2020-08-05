@@ -1,22 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CustomerController } from './customer/customer.controller';
-import { CustomerService } from './customer/customer.service';
-import { OrderController } from './order/order.controller';
-import { OrderService } from './order/order.service';
-import { OrderItemController } from './order-item/orderItem.controller';
-import { OrderItemService } from './order-item/orderItem.service';
-import { ProductController } from './product/product.controller';
-import { ProductService } from './product/product.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Cliente } from './customer/cliente.entity';
-import { Pedido } from './order/pedido.entity';
-import { ItemPedido } from './order-item/itemPedido.entity';
-import { Produto } from './product/produto.entity';
-import { StockController } from './stock/stock.controller';
-import { StockService } from './stock/stock.service';
-import { Stock } from './stock/stock.entity';
+import { Cliente } from './cliente/cliente.entity';
+import { ClienteController } from './cliente/cliente.controller';
+import { ClienteService } from './cliente/cliente.service';
+import { Medicamento } from './medicamento/medicamento.entity';
+import { Venda } from './venda/venda.entity';
+import { MedicamentoService } from './medicamento/medicamento.service';
+import { MedicamentoController } from './medicamento/medicamento.controller';
+import { VendaService } from './venda/venda.service';
+import { VendaController } from './venda/venda.controller';
 
 @Module({
   imports: [
@@ -25,14 +19,12 @@ import { Stock } from './stock/stock.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'Aranha0600',
+      password: '1234',
       database: 'atividade-web',
       entities: [
         Cliente,
-        Pedido,
-        ItemPedido,
-        Produto,
-        Stock,
+        Medicamento,
+        Venda,
       ],
 
       synchronize: true,
@@ -42,15 +34,13 @@ import { Stock } from './stock/stock.entity';
 
     TypeOrmModule.forFeature([
       Cliente,
-      Pedido,
-      ItemPedido,
-      Produto,
-      Stock,
+      Medicamento,
+      Venda,
     ])
 
   ],
   
-  controllers: [AppController, CustomerController, OrderController, ProductController, OrderItemController, StockController],
-  providers: [AppService, CustomerService, OrderService, ProductService, OrderItemService, StockService],
+  controllers: [AppController, ClienteController, MedicamentoController, VendaController],
+  providers: [AppService, ClienteService, MedicamentoService, VendaService],
 })
 export class AppModule {}
